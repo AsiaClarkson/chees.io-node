@@ -84,7 +84,7 @@ app.patch('/api/cheeses/:id', function (request, response) {
 
         })
         .then((cheese) => {
-            response.status(200).json(track);
+            response.status(200).json(cheese);
         }, (validation) => {
             response.status(422).json({
                 errors: validation.errors.map((error) => {
