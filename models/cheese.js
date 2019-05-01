@@ -5,7 +5,8 @@ module.exports = sequelize.define('cheese',{
     id: {
         field: 'id',
         type: Sequelize.INTEGER,
-        primaryKey: true
+        primaryKey: true,
+        autoIncrement: true
     },
     name:{
         field: 'name',
@@ -15,9 +16,9 @@ module.exports = sequelize.define('cheese',{
               args: true,
               msg: 'Name is required'
             },
-            isAlpha: {
-              args: true,
-              msg: 'Name must only contain letters'
+            is: {
+              args: /^[a-z-'\s]+$/i,
+              msg: 'Name must only contain letters, spaces, apostrophes, or dashes'
             },
             len: {
               args: [2, 20],

@@ -44,19 +44,23 @@ app.get('/api/cheeses/:id', function (request, response) {
 app.post('/api/cheeses', function (request, response) {
     Cheese.create({
         name: request.body.name,
-        flavor: request.body.flavor
-
+        flavor: request.body.flavor,
+        type_id: request.body.type_id,
+        texture_id: request.body.texture_id,
+        color_id: request.body.color_id,
+        country_id: request.body.country_id,
+        image: request.body.image
     }).then((cheese) => {
         response.json(cheese);
     }, (validation) => {
-        response.status(422).json({
+        response.status(422).json(validation /*{
             errors: validation.errors.map((error) => {
                 return {
                     attribute: error.path,
                     message: error.message
                 };
             })
-        });
+        }*/);
     });
 });
 
